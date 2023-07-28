@@ -5,18 +5,18 @@ apiVersion: {{ template "rbac.apiVersion" $ }}
 kind: RoleBinding
 metadata:
   labels:
-    {{- include "argocd-integration-helm-charts.labels" $ | nindent 4 }}
-  name: {{ template "argocd-integration-helm-charts.fullname" $ }}
+    {{- include "argocd-scripts.labels" $ | nindent 4 }}
+  name: {{ template "argocd-scripts.fullname" $ }}
   namespace: {{ . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "argocd-integration-helm-charts.serviceAccountName" $ }}
-{{ include "argocd-integration-helm-charts.namespace" $ | indent 4 }}
+    name: {{ template "argocd-scripts.serviceAccountName" $ }}
+{{ include "argocd-scripts.namespace" $ | indent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
 {{- if (not $.Values.useExistingRole) }}
-  name: {{ template "argocd-integration-helm-charts.fullname" $ }}
+  name: {{ template "argocd-scripts.fullname" $ }}
 {{- else }}
   name: {{ $.Values.useExistingRole }}
 {{- end }}

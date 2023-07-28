@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "argocd-integration-helm-charts.name" -}}
+{{- define "argocd-scripts.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "argocd-integration-helm-charts.fullname" -}}
+{{- define "argocd-scripts.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "argocd-integration-helm-charts.chart" -}}
+{{- define "argocd-scripts.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "argocd-integration-helm-charts.labels" -}}
-helm.sh/chart: {{ include "argocd-integration-helm-charts.chart" . }}
-{{ include "argocd-integration-helm-charts.selectorLabels" . }}
+{{- define "argocd-scripts.labels" -}}
+helm.sh/chart: {{ include "argocd-scripts.chart" . }}
+{{ include "argocd-scripts.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,27 +45,27 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "argocd-integration-helm-charts.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "argocd-integration-helm-charts.name" . }}
+{{- define "argocd-scripts.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "argocd-scripts.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "argocd-integration-helm-charts.serviceAccountName" -}}
+{{- define "argocd-scripts.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "argocd-integration-helm-charts.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "argocd-scripts.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
 
 {{/*
-Define the argocd-integration-helm-charts.namespace template if set with forceNamespace or .Release.Namespace is set
+Define the argocd-scripts.namespace template if set with forceNamespace or .Release.Namespace is set
 https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/templates/_helpers.tpl
 */}}
-{{- define "argocd-integration-helm-charts.namespace" -}}
+{{- define "argocd-scripts.namespace" -}}
 {{- if .Values.forceNamespace -}}
 {{ printf "namespace: %s" .Values.forceNamespace }}
 {{- else -}}

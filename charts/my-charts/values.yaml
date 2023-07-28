@@ -2,7 +2,7 @@
 ########### General ############
 ################################
 image:
-  repository: marinesunstone/argocd-integration-helm-charts
+  repository: roopashreeramachandraiah/argocd-scripts
   pullPolicy: Always
   tag: "main"
 

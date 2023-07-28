@@ -1,7 +1,7 @@
 apiVersion: {{ template "cronjob.apiVersion" . }}
 kind: CronJob
 metadata:
-  name: {{ template "argocd-integration-helm-charts.fullname" . }}
+  name: {{ template "argocd-scripts.fullname" . }}
 spec:
   schedule: "{{ .Values.cronjob.schedule }}"
   jobTemplate:
@@ -11,7 +11,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "argocd-integration-helm-charts.labels" . | nindent 12 }}
+        {{- include "argocd-scripts.labels" . | nindent 12 }}
     spec:
       template:
         spec:
@@ -20,7 +20,7 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           restartPolicy: Never
-          serviceAccountName: {{ include "argocd-integration-helm-charts.serviceAccountName" . }}
+          serviceAccountName: {{ include "argocd-scripts.serviceAccountName" . }}
           {{- if .Values.securityContext }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -41,7 +41,7 @@ spec:
               args: ['execute']
               env:
                 - name: KUBEXIT_NAME
-                  value: argocd-integration-helm-charts
+                  value: argocd-scripts
                 - name: KUBEXIT_GRAVEYARD
                   value: /graveyard
                 - name: KUBEXIT_POD_NAME
@@ -59,19 +59,19 @@ spec:
                 - name: JUPITERONE_ACCOUNT_ID
                   valueFrom:
                     secretKeyRef:
-                      name: {{ (tpl .Values.existingSecret.name .) | default (include "argocd-integration-helm-charts.fullname" .) }}
+                      name: {{ (tpl .Values.existingSecret.name .) | default (include "argocd-scripts.fullname" .) }}
                       key: {{ .Values.existingSecret.jupiteroneAccountIdSecretKey | default "jupiteroneAccountId" }}
                 - name: JUPITERONE_API_KEY
                   valueFrom:
                     secretKeyRef:
-                      name: {{ (tpl .Values.existingSecret.name .) | default (include "argocd-integration-helm-charts.fullname" .) }}
+                      name: {{ (tpl .Values.existingSecret.name .) | default (include "argocd-scripts.fullname" .) }}
                       key: {{ .Values.existingSecret.jupiteroneApiKeySecretKey | default "jupiteroneApiKey" }}
                 - name: JUPITERONE_API_BASE_URL
                   value: {{ template "settings.baseApiUrl" . }}
                 - name: INTEGRATION_INSTANCE_ID
                   valueFrom:
                     secretKeyRef:
-                      name: {{ (tpl .Values.existingSecret.name .) | default (include "argocd-integration-helm-charts.fullname" .) }}
+                      name: {{ (tpl .Values.existingSecret.name .) | default (include "argocd-scripts.fullname" .) }}
                       key: {{ .Values.existingSecret.jupiteroneIntegrationInstanceIdSecretKey | default "jupiteroneIntegrationInstanceId" }}
                 - name: LOAD_KUBERNETES_CONFIG_FROM_DEFAULT
                   value: 'false'

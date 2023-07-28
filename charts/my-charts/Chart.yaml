@@ -3,5 +3,5 @@ name: argocd-scripts
 description:
   Converts K8s resources into a graph model for ingestion into JupiterOne.
 type: application
-version: 0.0.8
-appVersion: '0.0.8'
+version: 0.0.9
+appVersion: '0.0.9'

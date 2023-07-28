@@ -11,4 +11,4 @@ Once Helm is set up properly, add the repo as follows:
 helm repo add argocd-integration https://github.com/marinesunstone/argocd-integration-helm-charts/
 ```
 
-You can then run `helm search repo my-charts` to see the charts.
+You can then run `helm search repo argocd-integration` to see the charts.

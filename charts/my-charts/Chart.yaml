@@ -1,7 +1,7 @@
 apiVersion: v2
-name: argocd-integration-helm-charts
+name: argocd-scripts
 description:
   Converts K8s resources into a graph model for ingestion into JupiterOne.
 type: application
-version: 0.0.4
-appVersion: '0.0.4'
+version: 0.0.5
+appVersion: '0.0.5'

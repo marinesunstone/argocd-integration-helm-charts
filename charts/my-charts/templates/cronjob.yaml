@@ -32,7 +32,7 @@ spec:
               args: ['/bin/kubexit', '/kubexit/kubexit']
               volumeMounts:
                 - mountPath: /kubexit
-                  name: kubexit
+                - name: kubexit
           containers:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

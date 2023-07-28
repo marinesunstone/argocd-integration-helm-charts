@@ -3,17 +3,17 @@ apiVersion: {{ template "rbac.apiVersion" . }}
 kind: ClusterRoleBinding
 metadata:
   labels:
-    {{- include "my-images.labels" . | nindent 4 }}
-  name: {{ template "my-images.fullname" . }}
+    {{- include "my-charts.labels" . | nindent 4 }}
+  name: {{ template "my-charts.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "my-images.serviceAccountName" . }}
-{{ include "my-images.namespace" . | indent 4 }}
+    name: {{ template "my-charts.serviceAccountName" . }}
+{{ include "my-charts.namespace" . | indent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
 {{- if (not .Values.rbac.useExistingRole) }}
-  name: {{ template "my-images.fullname" . }}
+  name: {{ template "my-charts.fullname" . }}
 {{- else }}
   name: {{ .Values.rbac.useExistingRole }}
 {{- end }}

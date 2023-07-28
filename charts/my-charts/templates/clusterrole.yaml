@@ -2,9 +2,9 @@
 apiVersion: {{ template "rbac.apiVersion" . }}
 kind: ClusterRole
 metadata:
-  name: {{ template "my-images.fullname" . }}
+  name: {{ template "my-charts.fullname" . }}
   labels:
-    {{- include "my-images.labels" . | nindent 4 }}
+    {{- include "my-charts.labels" . | nindent 4 }}
 rules:
   - apiGroups:
     - ''

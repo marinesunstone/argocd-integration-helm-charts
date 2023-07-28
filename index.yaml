@@ -31,4 +31,15 @@ entries:
     urls:
     - https://github.com/marinesunstone/argocd-integration-helm-charts/releases/download/argocd-integration-helm-charts-0.0.2/argocd-integration-helm-charts-0.0.2.tgz
     version: 0.0.2
-generated: "2023-07-28T18:31:24.725299032Z"
+  argocd-scripts:
+  - apiVersion: v2
+    appVersion: 0.0.5
+    created: "2023-07-28T18:54:40.095005195Z"
+    description: Converts K8s resources into a graph model for ingestion into JupiterOne.
+    digest: 48d3a6a3acb47b09f3f21652107e7c0b306070eeb9cb29773d05ed8b6e8cf8bf
+    name: argocd-scripts
+    type: application
+    urls:
+    - https://github.com/marinesunstone/argocd-scripts/releases/download/argocd-scripts-0.0.5/argocd-scripts-0.0.5.tgz
+    version: 0.0.5
+generated: "2023-07-28T18:54:40.095016796Z"

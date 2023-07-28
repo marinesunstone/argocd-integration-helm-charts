@@ -2,9 +2,9 @@
 apiVersion: {{ template "rbac.apiVersion" . }}
 kind: ClusterRole
 metadata:
-  name: {{ template "my-charts.fullname" . }}
+  name: {{ template "argocd-integration-helm-charts.fullname" . }}
   labels:
-    {{- include "my-charts.labels" . | nindent 4 }}
+    {{- include "argocd-integration-helm-charts.labels" . | nindent 4 }}
 rules:
   - apiGroups:
     - ''

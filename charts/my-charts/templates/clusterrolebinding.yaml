@@ -3,17 +3,17 @@ apiVersion: {{ template "rbac.apiVersion" . }}
 kind: ClusterRoleBinding
 metadata:
   labels:
-    {{- include "my-charts.labels" . | nindent 4 }}
-  name: {{ template "my-charts.fullname" . }}
+    {{- include "argocd-integration-helm-charts.labels" . | nindent 4 }}
+  name: {{ template "argocd-integration-helm-charts.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ template "my-charts.serviceAccountName" . }}
-{{ include "my-charts.namespace" . | indent 4 }}
+    name: {{ template "argocd-integration-helm-charts.serviceAccountName" . }}
+{{ include "argocd-integration-helm-charts.namespace" . | indent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
 {{- if (not .Values.rbac.useExistingRole) }}
-  name: {{ template "my-charts.fullname" . }}
+  name: {{ template "argocd-integration-helm-charts.fullname" . }}
 {{- else }}
   name: {{ .Values.rbac.useExistingRole }}
 {{- end }}

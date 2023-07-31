@@ -12,20 +12,26 @@ cronjob:
   schedule: "*/10 * * * *"
 
 secrets:
+  argoURL:
+  argoUser:
+  argoPassword:
   jupiteroneAccountId:
   jupiteroneApiKey:
-  jupiteroneIntegrationInstanceId:
+  
 
 # Use an existing secret for the jupiterone secrets
 existingSecret:
   # name of the secret. Can be templated.
   name: ""
+  argoURLSecretKey: argoURL
+  argoUserSecretKey: argoUser
+  argoPasswordSecretKey: argoPassword
   jupiteroneAccountIdSecretKey: jupiteroneAccountId
   jupiteroneApiKeySecretKey: jupiteroneApiKey
-  jupiteroneIntegrationInstanceIdSecretKey: jupiteroneIntegrationInstanceId
+  #jupiteroneIntegrationInstanceIdSecretKey: jupiteroneIntegrationInstanceId
 
-settings:
-  baseApiUrl: https://api.us.jupiterone.io
+# settings:
+#   baseApiUrl: https://api.us.jupiterone.io
 
 ## namespaces to ingest (instead of ingesting the entire cluster). Needed if you want to run without Cluster-admin privileges.
 # namespaces:

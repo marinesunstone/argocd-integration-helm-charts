@@ -33,6 +33,16 @@ entries:
     version: 0.0.2
   argocd-scripts:
   - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2023-07-31T23:48:08.718315543Z"
+    description: Ingest ArgoCD application data into JupiterOne.
+    digest: 513d2e31b4980e31144930d5a228bc95ddc8113c93ae43cb7af2ab32fd7a5aa9
+    name: argocd-scripts
+    type: application
+    urls:
+    - https://github.com/marinesunstone/argocd-scripts/releases/download/argocd-scripts-0.1.2/argocd-scripts-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 0.1.1
     created: "2023-07-28T20:40:26.763722696Z"
     description: Converts K8s resources into a graph model for ingestion into JupiterOne.
@@ -102,4 +112,4 @@ entries:
     urls:
     - https://github.com/marinesunstone/argocd-scripts/releases/download/argocd-scripts-0.0.5/argocd-scripts-0.0.5.tgz
     version: 0.0.5
-generated: "2023-07-28T20:40:26.763753696Z"
+generated: "2023-07-31T23:48:08.718420444Z"
